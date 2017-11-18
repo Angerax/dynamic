@@ -1,0 +1,49 @@
+{% extends "BootstrapThemeBundle::layout.html.twig" %}
+{% set page_title = 'Discussion' %}
+
+
+{% block title %}
+
+    {{ parent()}}{{ page_title }}
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="font">
+            <div class="row">
+                <div class="col-md-12">Slide</div>
+            </div>
+
+            <h2>Discussion</h2>
+
+            <div class="col-md-1"></div>
+            <div class="container col-md-7">
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('static', {'page': 'categories'}) }}">Catégories</a></li>
+                    <li><a href="{{ path('static', {'page': 'sujets'}) }}">Sujets</a></li>
+                    <li><a class="current" href="{{ path('static', {'page': 'discussion'}) }}">Discussion</a></li>
+                </ul>
+                
+            </div>
+
+            <div class="col-md-1 btnfloat"></div>
+            <div class="container col-md-2 btnfloat">
+                <aside>
+
+                    <div class="suggest">
+                        
+                    </div>
+
+                    <div class="row"></div>
+                    <div class="col-md-12 btnfloat suggest">
+                        
+                    </div>
+                </aside>
+            </div>
+            <div class="row"></div>
+        </div>
+                
+       
+    
+{% endblock %}

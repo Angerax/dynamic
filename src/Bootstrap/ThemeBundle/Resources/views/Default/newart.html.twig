@@ -1,0 +1,101 @@
+{% extends "BootstrapThemeBundle::layout.html.twig" %}
+{% set page_title = 'newart' %}
+
+{% block title %}
+
+    {{ parent()}}{{ page_title }}
+
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="font">
+            <div class="row">
+                <div class="col-md-12">Slide</div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="well well-lg">
+                        <h4 class="txt-register">Créer un nouvel article</h4>
+
+                        <div class="form-group">
+                            <label>Catégories</label>
+                            <select class="form-control">
+                                
+                                            {% block option %}
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            {% endblock %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Titre de l'article</label>
+                            <input class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Lien</label>
+                            <input class="form-control">
+                        </div>
+                        <div class="row margtb">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-2">
+                                <a href="#" class="btn btn-primary btn-lg btn-block btn-outline">Annuler</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="#" class="btn btn-primary btn-lg btn-block btn-outline2">Créer</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row margtb">
+            <div class="col-md-2"></div>
+
+            <div class="col-md-8">
+                <p class="subtitle">Rappel des règles</p>
+            </div>
+
+            <div class="col-md-2"></div>
+
+        </div>
+
+        <div class="row margtb">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <a href="https://www.youtube.com" target="_blank">
+                           <img width="128" src="../Resources/public/images/youtube_social_square_red.png" alt="YouYube logo"  class="logos"></a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="https://www.soundcloud.com" target="_blank">
+               <img width="128" src="../Resources/public/images/26-soundcloud-logo.w190.h190.jpg" alt="Soundcloud logo"  class="logos"></a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="https://www.house-mixes.com" target="_blank">
+               <img width="134" src="../Resources/public/images/HM-logo-resized.gif" alt="House-mixes logo" class="logos btnfloat"></a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="https://www.mixcloud.com/" target="_blank">
+               <img width="128" src="../Resources/public/images/MixCloud_Logo.png" alt="MixCloud logo" class=" logos btnfloat"></a>
+            </div>
+
+            <div class="col-md-2"></div>
+        </div>
+
+    </section>
+{% endblock %}

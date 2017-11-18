@@ -1,0 +1,48 @@
+{% extends "BootstrapThemeBundle::layout.html.twig" %}
+{% set page_title = 'Categories' %}
+
+{% block title %}
+
+    {{ parent()}}{{ page_title }}
+
+{% endblock %}
+
+{% block body %}
+    <section>
+    <div class="font">
+            <div class="row">
+                <div class="col-md-12">Slide</div>
+            </div>
+
+        {% block h2 %}
+            <h2>Catégories</h2>
+        {% endblock %}
+
+            <div class="col-md-2"></div>
+            <div class="container col-md-6">
+                <ul class="breadcrumb">
+                    <li><a href="{{ path('static', {'page': 'categories'}) }}">Catégories</a></li>
+{% block breadcrumbs %}
+{% endblock %}
+                </ul>
+                
+            </div>
+
+            <div class="col-md-1 btnfloat"></div>
+            <div class="container col-md-2 btnfloat">
+                <aside>
+
+                    <div class="suggest">
+                        
+                    </div>
+
+                    <div class="row"></div>
+                    <div class="col-md-12 btnfloat suggest">
+                        
+                    </div>
+                </aside>
+            </div>
+            <div class="row"></div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "BootstrapThemeBundle::layout.html.twig" %}
+{% set page_title = 'Compte' %}
+
+{% block title %}
+
+    {{ parent()}}{{ page_title }}
+
+{% endblock %}
+
+{% block body %}
+    
+   <section>
+        <div class="font">
+            <div class="row">
+                <div class="col-md-12">Slide</div>
+            </div>
+            <h2>Compte</h2>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-lg-10">
+                    <div class="panel panel-default borderblue">
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#info" data-toggle="tab">Information</a>
+                                </li>
+                                <li><a href="#history" data-toggle="tab">Historique</a>
+                                </li>
+                                
+                                {% block modifier %}
+                                        
+                                {% endblock %}
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade in active" id="info">
+                                    <h4 class="border2">Information</h4>
+                                    <div class="col-md-5 margtb"></div>
+                                    <div class="col-md-2 margtb">
+                                        
+                                        {% block avatar %}
+                                        
+                                        {% endblock %}
+                                        
+                                    </div>
+                                    <div class="row margtb"></div>
+                                    <h4 class="border2">Pseudo</h4>
+                                    <div class="account-title margtb2">
+                                        {% block name %}
+                                        
+                                        {% endblock %}
+                                    </div>
+
+                                    <div class="row margtb"></div>
+                                    <h4 class="border2">A propos</h4>
+                                        
+                                        {% block bio %}
+                                        
+                                        {% endblock %}
+                                        
+                                </div>
+                                <div class="tab-pane fade" id="history">
+                                    <h4 class="border2">Historique</h4>
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8">
+                                    
+                                        {% block panel %}
+                                        
+                                        {% endblock %}
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+        </div>
+        <div class="row"></div>
+
+    </section>
+
+    {% block scripts %}
+        <script src="../Resources/public/vendor/jquery/jquery.min.js"></script>
+        <script src="../Resources/public/vendor/bootstrap/js/bootstrap.min.js"></script>
+    {% endblock %}
+    
+{% endblock %}

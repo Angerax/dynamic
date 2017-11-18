@@ -1,0 +1,24 @@
+admin_admin_homepage:
+    path:     /
+    defaults: { _controller: AdminAdminBundle:Default:index }
+    
+    
+admin_admin_users:
+    path:     /users
+    defaults: { _controller: AdminAdminBundle:Default:users }
+
+admin_admin_category:
+    path:     /category
+    defaults: { _controller: AdminAdminBundle:Default:category }
+
+admin_admin_topics:
+    path:     /topics
+    defaults: { _controller: AdminAdminBundle:Default:topics }
+    
+admin_admin_messsages:
+    path:     /messages
+    defaults: { _controller: AdminAdminBundle:Default:messages }
+    
+admin_admin_admin:
+    resource: "@AdminAdminBundle/Controller/"
+    type:     annotation

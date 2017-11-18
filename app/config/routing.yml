@@ -1,0 +1,11 @@
+admin_admin:
+    resource: "@AdminAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+bootstrap_theme:
+    resource: "@BootstrapThemeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

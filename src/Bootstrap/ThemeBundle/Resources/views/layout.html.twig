@@ -1,0 +1,47 @@
+{% extends "::layout.html.twig" %}
+
+{% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Resources/public/css/sb-admin-2.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Resources/public/css/bootstrap.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Resources/public/css/font-awesome.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('Resources/public/css/style.css') }}" />
+
+{% block title %}  
+    
+    FTW - 
+
+{% endblock %}
+
+{% endblock %}
+
+        
+{% block header %}
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="{{ path('bootstrap_theme_homepage') }}">
+                        <h1>Feel the wave</h1>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group custom-search-form margtb">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default searchbtn" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                {% block connexion %}
+                    
+                {% endblock %}
+                
+            </div>
+        </div>
+                </header>
+
+{% endblock %}

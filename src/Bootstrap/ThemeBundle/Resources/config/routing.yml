@@ -1,0 +1,48 @@
+bootstrap_theme_homepage:
+    path:     /
+    defaults: { _controller: BootstrapThemeBundle:Default:index }
+    
+
+bootstrap_theme_categories:
+    path:     /categories
+    defaults: { _controller: BootstrapThemeBundle:Default:categories }
+    
+
+bootstrap_theme_discussion:
+    path:     /discussion
+    defaults: { _controller: BootstrapThemeBundle:Default:discussion }
+    
+    
+bootstrap_theme_sujets:
+    path:     /sujets
+    defaults: { _controller: BootstrapThemeBundle:Default:sujets }
+    
+    
+bootstrap_theme_compte:
+    path:     /compte
+    defaults: { _controller: BootstrapThemeBundle:Default:compte }
+    
+    
+bootstrap_theme_newart:
+    path:     /newart
+    defaults: { _controller: BootstrapThemeBundle:Default:newart }
+    
+    
+bootstrap_theme_register:
+    path:     /register
+    defaults: { _controller: BootstrapThemeBundle:Default:register }
+    
+    
+bootstrap_theme_login:
+    path:     /login
+    defaults: { _controller: BootstrapThemeBundle:Default:login }
+    
+
+bootstrap_theme_passchange:
+    path:     /passchange
+    defaults: { _controller: BootstrapThemeBundle:Default:passchange }
+    
+    
+bootstrap_theme_static:
+    resource: "@BootstrapThemeBundle/Controller/"
+    type:     annotation

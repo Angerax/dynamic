@@ -1,0 +1,91 @@
+{% extends "BootstrapThemeBundle::layout.html.twig" %}
+
+{% block title %}
+
+  Feel the wave
+
+{% endblock %}
+
+{% block body %}
+    <section>    
+        <div class="font">
+            <div class="row">
+                <div class="col-md-12 slide">
+                   <div class="inslide">
+                    <h3>Bienvenue</h3>
+                    <div class="col-md-4 margtb2"></div>
+                    <div class="col-md-4 margtb2">
+                        <a href="{{ path('static', {'page': 'register'}) }}" class="btn btn-primary btn-lg btn-block btn-register">S'inscrire</a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Découvrir</h2>
+            
+            
+            <div class="row">
+                <div class="col-md-12 discover">
+                    <a class="discover" href="{{ path('static', {'page': 'categories'}) }}">Explorer</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Inscription</h2>
+            </div>
+
+
+            <div class="col-md-12">
+                <p class="subtitle">Quel sont les avantages?</p>
+            </div>
+        </div>
+
+        <div class="row margtb">
+            <div class="col-md-2"></div>
+
+            <div class="col-md-8">
+                <p class="subtitle">Texte avantages</p>
+            </div>
+
+            <div class="col-md-2"></div>
+
+        </div>
+
+        <div class="row margtb">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <a href="https://www.youtube.com" target="_blank">
+                           <img width="128" src="{{ asset('Resources/public/images/youtube_social_square_red.png') }}" alt="YouTube logo"  class="logos"></a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="https://www.soundcloud.com" target="_blank">
+               <img width="128" src="{{ asset('Resources/public/images/26-soundcloud-logo.w190.h190.jpg') }}" alt="Soundcloud logo"  class="logos"></a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="https://www.house-mixes.com" target="_blank">
+               <img width="134" src="{{ asset('Resources/public/images/HM-logo-resized.gif') }}" alt="House-mixes logo" class="logos btnfloat"></a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="https://www.mixcloud.com/" target="_blank">
+               <img width="128" src="{{ asset('Resources/public/images/MixCloud_Logo.png') }}" alt="MixCloud logo" class=" logos btnfloat"></a>
+            </div>
+
+            <div class="col-md-2"></div>
+        </div>
+
+        <div class="row margtb2">
+            <div class="col-md-4"></div>
+            <div class="col-md-3">
+                <a href="{{ path('static', {'page': 'register'}) }}" class="btn btn-primary btn-lg btn-block btn-register">S'inscrire</a>
+            </div>
+            <div class="col-md-1 connectbot">
+                <a href="{{ path('static', {'page': 'login'}) }}" class="btn btn-outline btn-primary">Connexion</a>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </section>
+{% endblock %}

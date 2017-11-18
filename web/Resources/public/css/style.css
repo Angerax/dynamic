@@ -1,0 +1,290 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 31-oct.-2017, 14:58:01
+    Author     : Olivier
+*/
+
+@font-face {
+    font-family: 'the_led_display_stregular';
+    src: url('../fonts/the_led_display_st-webfont.eot');
+    src: url('../fonts/the_led_display_st-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/the_led_display_st-webfont.woff2') format('woff2'),
+         url('../fonts/the_led_display_st-webfont.woff') format('woff'),
+         url('../fonts/the_led_display_st-webfont.ttf') format('truetype'),
+         url('../fonts/the_led_display_st-webfont.svg#the_led_display_stregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+body{
+    background-color: #323234;
+}
+
+
+header{
+    border-bottom: 3px solid #01a2aa;
+    background-color: #323234;
+}
+
+.suggest{
+    background-color: #fff;
+    margin-bottom: 40px;
+    padding: 15px;
+    border:5px solid #289fa5;
+    border-radius: 6px;
+}
+
+.slide{
+    background-image: url(../images/nainoa-shizuru-80385.jpg);
+    background-size: cover;
+    background-position: 0% 50%;
+    border-bottom: 3px solid #01a2aa;
+    width: 100%;
+    height:700px;
+}
+
+.inslide{
+    position: relative;
+    top:260px;
+}
+
+
+/*-----------------------------------------------------------------------------------------
+                                    Paneaux connexion/inscription
+------------------------------------------------------------------------------------------*/
+
+.btn-success {
+    background-color: #01a2aa;
+    border-color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #027075;
+    border-color: #fff;
+}
+
+.center{
+    text-align: center;
+}
+
+.return{
+    margin-top:10px;
+    margin-left: 38%;
+}
+
+/*-----------------------------------------------------------------------------------------
+                                    header
+------------------------------------------------------------------------------------------*/
+
+h1{
+    color: #fff;
+    font-family:'the_led_display_stregular',Arial,serif;
+    font-size: 35px;
+}
+
+h1:hover{
+    color: #289fa5;
+}
+
+h2{
+    color:#fff;
+    font-size: 45px;
+    text-align: center;
+    margin: 30px 0 30px 0;
+}
+
+h3{
+    text-align: center;
+    color: #fff;
+    font-size:55px;
+    margin: 0;
+    font-weight: bold;
+}
+
+h4{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.btnfloat{
+    float:right;
+}
+
+.margtb{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.margtb2{
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.btn-primary {
+    border:1.5px solid #289fa5;
+/*    border-radius: 6px;*/
+}
+
+.btn-primary.btn-outline:hover {
+    color: #fff;
+    background-color: #01a2aa;
+    border:1.5px solid #fff;
+}
+
+.btn-outline2{
+    color:#fff;
+    background-color: #01a2aa;
+    border:1.5px solid #fff;
+}
+
+.btn-outline2:hover{
+    color:#000;
+    background-color: #fff;
+    border:1.5px solid #01a2aa;
+}
+
+.searchbtn:hover{
+    color: #fff;
+    background-color: #289fa5;
+    border-color:#fff;
+}
+
+/*-----------------------------------------------------------------------------------------
+                                    Panneaux
+------------------------------------------------------------------------------------------*/
+
+.panel-default{
+    border: 3px solid #fff;
+/*    border-radius: 6px;*/
+}
+
+.panel-default > .panel-heading{
+    color:#fff;
+    background-color: #289fa5;
+}
+
+.discover{
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    text-align: center;
+    text-decoration: none;
+}
+
+.cat{
+    font-size: 16px;
+    margin: 0 0 20px 0;
+    text-decoration: none;
+}
+
+.fa-flag{
+    font-size: 17px;
+    margin-left: 20px;
+}
+
+.flag{
+    color: #000;
+}
+
+.glyphicon-heart,.glyphicon-heart-empty{
+    font-size: 17px;
+}
+
+.like{
+    margin-left: 9%;
+}
+
+.avatar{
+    width:100%;
+}
+
+.pseudo{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.border{
+    border-left: 1px solid #000;
+}
+
+.border2{
+    border-bottom: 1px solid #000;
+}
+
+/*-----------------------------------------------------------------------------------------
+                                    Divers
+------------------------------------------------------------------------------------------*/
+
+.font{
+    background-color: #000;
+     border-bottom: 3px solid #01a2aa;
+}
+
+.subtitle{
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+
+.logos:hover{
+    background-color: #000;
+    opacity: 0.3;
+}
+
+.btn-register{
+    background-color: #01a2aa;
+    border-color: #fff;
+}
+
+.btn-register:hover{
+    color: #000;
+    background-color: #fff;
+    border:3px solid #01a2aa;
+}
+
+
+.connectbot{
+    margin-top: 5px;
+}
+
+.fa-chevron-circle-left, .fa-chevron-circle-right{
+    font-size: 20px;
+}
+
+.center{
+    width: 100%;
+}
+
+.txt-register{
+    text-align: center;
+}
+
+ul li a{
+    color:#000;
+}
+
+.current{
+    color:#01a2aa;
+}
+
+.account-title{
+    text-align: center;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a{
+    background-color: #01a2aa;
+    color:#fff;
+}
+
+a:active,a:hover {
+ outline:0
+}
+
+.borderblue{
+    border:2px solid #01a2aa;
+}

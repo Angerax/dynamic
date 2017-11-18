@@ -1,0 +1,45 @@
+html{
+    background-color: #323234;
+}
+
+body{
+     background-color: #323234;
+}
+
+.navbar, .navbar-default, .navbar-static-top{
+    border-bottom: 3px solid #01a2aa;
+    background-color: #323234;
+}
+
+.sidebar-search{
+     border-top: 2px solid #01a2aa;
+}
+
+#page-wrapper{
+    background-color: #323234;
+    color:#fff;
+}
+
+.navbar-brand{
+    color:#fff !important;
+}
+
+a{
+    color:#fff;
+}
+
+.btntop{
+    margin-top: 25px;
+}
+
+.btn-outline2{
+    color:#fff;
+    background-color: #01a2aa;
+    border:1.5px solid #fff;
+}
+
+.btn-outline2:hover{
+    color:#000;
+    background-color: #fff;
+    border:1.5px solid #01a2aa;
+}
