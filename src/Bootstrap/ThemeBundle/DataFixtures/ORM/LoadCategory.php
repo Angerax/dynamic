@@ -1,20 +1,21 @@
 <?php
-namespace Bootstrap\ThemeBundle\DataFixtures\ORM;
+
+namespace Admin\AdminBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Bootstrap\ThemeBundle\Entity\Category;
+use Admin\AdminBundle\Entity\Category;
 
-class LoadCategory implements FixtureInterface {
-     public function load(ObjectManager $manager){
-         $names;
-     
-     foreach ($names as $newCategoryName){
+class LoadCategory implements FixtureInterface{
+    public function load(ObjectManager $manager){
+        $names;
+               
+        foreach ($names as $newCategoryName){
             $category = new Category();
             $category->setName($newCategoryName);
             
-            $manager->persist($category);
-     }
-     $manager->flush();
-}
+            $manager->persist ($category);
+        }
+        $manager->flush();
+    }
 }

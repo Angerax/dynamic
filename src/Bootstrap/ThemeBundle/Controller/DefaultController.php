@@ -15,6 +15,24 @@ class DefaultController extends Controller
     
     public function categoriesAction()
     {
+//        $em = $this->get('doctrine.orm.entity_manager');
+//        $repo = $em->getRepository('BootstrapThemeBundle:Category');
+//        $advert = $repo->find($id);
+//        
+//        if (null === $advert){
+//            throw new NotFoundHttpException('Pas d\'avert avec cet id');
+//        }
+//
+////        // On récupère la liste des candidatures de cette annonce
+////
+////        $listApplications = $em
+////            ->getRepository('BootstrapThemeBundle:Application')
+////            ->findBy(['advert' => $advert])
+////        ;
+//        
+//        
+//        return $this->render('@BootstrapTheme/Default/categories.html.twig');
+        
         return $this->render('BootstrapThemeBundle:Default:categories.html.twig');
     }
     
