@@ -61,7 +61,7 @@
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <a href="{% block change %}{% endblock %}" class="btn btn-lg btn-success btn-block">Confirmer</a>
-                                <a href="{% block annuler %}{% endblock %}" class="btn btn-default return">Annuler</a>
+                                <a href="{{ app.request.headers.get('referer') }}" class="btn btn-default return">Annuler</a>
                             </fieldset>
                         </form>
                     </div>

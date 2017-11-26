@@ -89,7 +89,7 @@ h1{
 }
 
 h1:hover{
-    color: #289fa5;
+    opacity: 0.3;
 }
 
 h2{
@@ -232,8 +232,7 @@ h4{
 }
 
 .logos:hover{
-    background-color: #000;
-    opacity: 0.3;
+    opacity: 0.2;
 }
 
 .btn-register{

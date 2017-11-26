@@ -50,7 +50,7 @@
                         <div class="row margtb">
                             <div class="col-md-4"></div>
                             <div class="col-md-2">
-                                <a href="#" class="btn btn-primary btn-lg btn-block btn-outline">Annuler</a>
+                                <a href="{{ app.request.headers.get('referer') }}" class="btn btn-primary btn-lg btn-block btn-outline">Annuler</a>
                             </div>
                             <div class="col-md-2">
                                 <a href="#" class="btn btn-primary btn-lg btn-block btn-outline2">Créer</a>

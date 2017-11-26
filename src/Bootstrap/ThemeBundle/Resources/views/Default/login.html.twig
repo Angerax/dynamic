@@ -60,7 +60,7 @@
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <a href="{% block login %}{% endblock %}" class="btn btn-lg btn-success btn-block">Se connecter</a>
-                                <a href="{% block register %}{% endblock %}" class="btn btn-default return">Annuler</a>
+                                <a href="{{ app.request.headers.get('referer') }}" class="btn btn-default return">Annuler</a>
                             </fieldset>
                         </form>
                     </div>
