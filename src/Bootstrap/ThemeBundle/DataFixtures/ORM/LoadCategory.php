@@ -8,7 +8,7 @@ use Admin\AdminBundle\Entity\Category;
 
 class LoadCategory implements FixtureInterface{
     public function load(ObjectManager $manager){
-        $names;
+        $names=name;
                
         foreach ($names as $newCategoryName){
             $category = new Category();
