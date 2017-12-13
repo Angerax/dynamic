@@ -8,13 +8,15 @@ use Admin\AdminBundle\Entity\Category;
 
 class LoadCategory implements FixtureInterface{
     public function load(ObjectManager $manager){
-        $names=name;
+        
+        $names=$qb->getQuery()->getArrayResult();
                
         foreach ($names as $newCategoryName){
             $category = new Category();
             $category->setName($newCategoryName);
             
             $manager->persist ($category);
+             $newCategoryName['content'];
         }
         $manager->flush();
     }

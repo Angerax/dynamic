@@ -12,6 +12,22 @@
                                 <div class="form-group">
                             <label>Ajouter une catégorie</label>
                             {{ include("AdminAdminBundle:Default:form.html.twig") }}
+                            <ul>                 
+                                <div class="col-md-11 pos">  
+                                {% for names in listCategory %}
+                                <div class="panel panel-default">
+                            <div class="panel-heading">
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="col-md-12 cat">                                    
+                                        <li>{{ names.Name }}</li>
+                                </div>
+                            </div>
+                        </div> 
+                                {% endfor %}
+                                </div>
+                            </ul>
                         </div>
                                 </div>
                             </div>

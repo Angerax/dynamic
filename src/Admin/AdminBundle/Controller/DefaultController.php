@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use OC\PlatformBundle\Entity\Application;
 
 class DefaultController extends Controller
 {
@@ -25,7 +26,7 @@ class DefaultController extends Controller
         return $this->render('AdminAdminBundle:Default:users.html.twig');
     }
     
-    
+ 
     public function categoryAction(Request $request)
     {
         // Création de l'entité Advert
@@ -49,8 +50,15 @@ class DefaultController extends Controller
             //On crée un message d'info
             $this->get('session')->getFlashBag()->add('notice','Probleme avec le formulaire');
         }
-
-        return $this->render('AdminAdminBundle:Default:category.html.twig',['myForm'=>$form->createView()]);
+        
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('BootstrapThemeBundle:Category');
+        $listCategory = $repository->findAll();
+ 
+        return $this->render('AdminAdminBundle:Default:category.html.twig',['listCategory'=>$listCategory,
+                                                                             'myForm'=>$form->createView()]);
     }
     
     
