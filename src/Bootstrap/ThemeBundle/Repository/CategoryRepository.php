@@ -10,4 +10,19 @@ namespace Bootstrap\ThemeBundle\Repository;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+
+     /**
+     * @param $pattern
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function QBLikeName($pattern){
+        
+        $qb = $this->createQueryBuilder('category');
+        $qb->where($qb->expr()->like('category.name',':pattern'))
+            ->setParameter('pattern',$pattern."%");
+        
+        return $qb;
+        
+    }
+    
 }

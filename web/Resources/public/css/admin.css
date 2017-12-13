@@ -44,14 +44,14 @@ a{
     border:1.5px solid #01a2aa;
 }
 
-#bootstrap_themebundle_category_name{
-    width:90%;
+#Bootstrap_themebundle_category_Nom{
+    width:87%;
     height:30px;
     margin:20px 0 20px 10px;
     color:#000;
 }
 
-#bootstrap_themebundle_category_save{
+#Bootstrap_themebundle_category_Enregistrer{
     color: #fff;
     background-color: #01a2aa;
     border: 1.5px solid #fff;
@@ -86,4 +86,18 @@ a{
     color: #01a2aa;
     background-color: #fff;
     border: 1.5px solid #01a2aa;
+}
+
+.cat{
+    color:#000;
+    list-style-type: none;
+}
+
+.panel-default > .panel-heading{
+    color:#fff;
+    background-color: #289fa5;
+}
+
+.pos{
+    padding: 8px;
 }

@@ -19,8 +19,8 @@ class CategoryType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')
-                ->add('save',SubmitType::class);
+        $builder->add('Nom', null, array('property_path' => 'name'))
+                ->add('Enregistrer',SubmitType::class);
     }
     
     
@@ -40,7 +40,7 @@ class CategoryType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'bootstrap_themebundle_category';
+        return 'Bootstrap_themebundle_category';
     }
 
 
