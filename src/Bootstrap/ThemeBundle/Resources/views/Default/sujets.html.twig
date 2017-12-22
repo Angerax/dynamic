@@ -9,3 +9,18 @@
 {% block breadcrumbs %}
                     <li><a class="current" href="{{ path('static', {'page': 'sujets'}) }}">Sujets</a></li>
 {% endblock %}
+{% block load %}
+{% for names in listTopic %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                            </div>
+                            <div class="panel-body">
+                            <div class="col-md-12 cat"> 
+                                <a href="#">
+                                 <li class="text">{{ names.Name }}</li>
+                                </a>
+                            </div>
+                            </div>
+                        </div> 
+                        {% endfor %}
+{% endblock %}

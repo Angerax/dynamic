@@ -21,7 +21,9 @@
                             <div class="panel-body">
 
                                 <div class="col-md-12 cat">                                    
-                                        <li>{{ names.Name }}</li>
+                                        <li>{{ names.Name }}<div class="col-md-1 del">
+                        <a href="{{ path('admin_admin_delete', {'id': names.id}) }}" class="btn btn-outline btn-primary">Effacer</a>
+                    </div></li>
                                 </div>
                             </div>
                         </div> 

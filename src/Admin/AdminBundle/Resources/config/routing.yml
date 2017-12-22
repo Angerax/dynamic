@@ -18,6 +18,12 @@ admin_admin_topics:
 admin_admin_messsages:
     path:     /messages
     defaults: { _controller: AdminAdminBundle:Default:messages }
+
+admin_admin_delete:
+     path:    /{id}
+     requirements: {id: \d+}
+     defaults: { _controller: AdminAdminBundle:Default:delete }
+     methods: [DELETE]
     
 admin_admin_admin:
     resource: "@AdminAdminBundle/Controller/"

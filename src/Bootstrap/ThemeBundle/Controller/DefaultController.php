@@ -4,6 +4,8 @@ namespace Bootstrap\ThemeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -15,25 +17,14 @@ class DefaultController extends Controller
     
     public function categoriesAction()
     {
-//        $em = $this->get('doctrine.orm.entity_manager');
-//        $repo = $em->getRepository('BootstrapThemeBundle:Category');
-//        $advert = $repo->find($id);
-//        
-//        if (null === $advert){
-//            throw new NotFoundHttpException('Pas d\'avert avec cet id');
-//        }
-//
-////        // On récupère la liste des candidatures de cette annonce
-////
-////        $listApplications = $em
-////            ->getRepository('BootstrapThemeBundle:Application')
-////            ->findBy(['advert' => $advert])
-////        ;
-//        
-//        
-//        return $this->render('@BootstrapTheme/Default/categories.html.twig');
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('BootstrapThemeBundle:Category');
+        $listCategory = $repository->findAll();
         
-        return $this->render('BootstrapThemeBundle:Default:categories.html.twig');
+        
+        return $this->render('BootstrapThemeBundle:Default:categories.html.twig',['listCategory'=>$listCategory]);
     }
     
     
@@ -42,10 +33,26 @@ class DefaultController extends Controller
         return $this->render('BootstrapThemeBundle:Default:discussion.html.twig');
     }
     
-    
-    public function sujetsAction()
+
+    /**
+     * 
+     * @Route("sujets", name="sujets")
+     */
+    public function sujetsAction(Request $request)
     {
-        return $this->render('BootstrapThemeBundle:Default:sujets.html.twig');
+
+        $tagName=$request->query->get('cat');
+        
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('BootstrapThemeBundle:Topic');
+        $listTopic = $repository->findby(
+               array('tag' => $tagName)
+//               array('date' => 'desc')
+                );
+              
+        return $this->render('BootstrapThemeBundle:Default:sujets.html.twig',['listTopic'=>$listTopic]);
     }
     
     

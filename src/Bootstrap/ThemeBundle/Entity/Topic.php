@@ -27,6 +27,13 @@ class Topic
      * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tag", type="string", length=50)
+     */
+    private $tag;
 
 
     /**
@@ -62,5 +69,28 @@ class Topic
     {
         return $this->name;
     }
-}
 
+    /**
+     * Set tag
+     *
+     * @param string $tag
+     *
+     * @return Topic
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Get tag
+     *
+     * @return string
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+}
