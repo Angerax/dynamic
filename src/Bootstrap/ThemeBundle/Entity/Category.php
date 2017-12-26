@@ -3,6 +3,8 @@
 namespace Bootstrap\ThemeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Category
@@ -27,8 +29,8 @@ class Category
      * @ORM\Column(name="name", type="string", length=50, unique=true)
      */
     private $name;
-
-
+    
+    
     /**
      * Get id
      *
@@ -61,5 +63,12 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
     }
 }

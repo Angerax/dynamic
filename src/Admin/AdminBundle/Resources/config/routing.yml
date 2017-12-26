@@ -7,13 +7,13 @@ admin_admin_users:
     path:     /users
     defaults: { _controller: AdminAdminBundle:Default:users }
 
-admin_admin_category:
+admin_admin_Category:
     path:     /category
-    defaults: { _controller: AdminAdminBundle:Default:category }
+    defaults: { _controller: AdminAdminBundle:Default:Category }
 
-admin_admin_topics:
+admin_admin_Topic:
     path:     /topics
-    defaults: { _controller: AdminAdminBundle:Default:topics }
+    defaults: { _controller: AdminAdminBundle:Default:Topic }
     
 admin_admin_messsages:
     path:     /messages

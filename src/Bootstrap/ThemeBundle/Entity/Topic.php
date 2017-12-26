@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Topic
- *
+ * 
  * @ORM\Table(name="topic")
  * @ORM\Entity(repositoryClass="Bootstrap\ThemeBundle\Repository\TopicRepository")
  */
@@ -34,7 +34,13 @@ class Topic
      * @ORM\Column(name="tag", type="string", length=50)
      */
     private $tag;
-
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Bootstrap\ThemeBundle\Entity\Category", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     */
+    protected $categories;
+    
 
     /**
      * Get id
@@ -92,5 +98,29 @@ class Topic
     public function getTag()
     {
         return $this->tag;
+    }
+
+    /**
+     * Set categories
+     *
+     * @param \Bootstrap\ThemeBundle\Entity\Category $categories
+     *
+     * @return Topic
+     */
+    public function setCategories(\Bootstrap\ThemeBundle\Entity\Category $categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Bootstrap\ThemeBundle\Entity\Category
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

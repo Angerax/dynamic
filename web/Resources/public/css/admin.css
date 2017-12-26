@@ -141,7 +141,7 @@ a{
     border-radius: 4px;
     float:right;
     position:relative;
-    top:-52px;
+    top:-140px;
     left:210px;
     width:20%;
     font-weight: bold;
@@ -169,4 +169,24 @@ a{
 .box2{
     width:33%;
     float:left;
+}
+
+.box3{
+    width:33%;
+    float:left;
+    margin-top: 20px; 
+}
+
+#Bootstrap_themebundle_topic_Categories{
+    width:50%;
+    margin-top: 10px;
+    color:#000;
+}
+
+#Bootstrap_themebundle_topic_Tags{
+    width: 87%;
+    margin-left: 42px;
+    margin-top: 20px;
+    height:30px;
+    color:#000;
 }

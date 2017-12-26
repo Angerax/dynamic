@@ -48,7 +48,7 @@ class DefaultController extends Controller
                 ->getManager()
                 ->getRepository('BootstrapThemeBundle:Topic');
         $listTopic = $repository->findby(
-               array('tag' => $tagName)
+               array('categories' => $tagName)
 //               array('date' => 'desc')
                 );
               

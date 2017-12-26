@@ -14,7 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use OC\PlatformBundle\Entity\Application;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class DefaultController extends Controller
 {
@@ -29,14 +29,14 @@ class DefaultController extends Controller
     }
     
  
-    public function categoryAction(Request $request)
+    public function CategoryAction(Request $request)
     {
         // Création de l'entité Advert
         $advert = new Category();
         
        $form = $this->createForm(CategoryType::class,$advert);
        
-        if ($form->handleRequest($request)->isSubmitted()){
+        if ($form->handleRequest($request)->isSubmitted() && $form->isValid()){
                 //On persiste l'entité
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($advert);
@@ -45,7 +45,7 @@ class DefaultController extends Controller
                 //On crée un message d'info
                 $this->get('session')->getFlashBag()->add('notice','Catégorie bien enregistrée');
                 //On redirige
-                return $this->redirectToRoute('admin_admin_category',['id'=>$advert->getId()]);
+                return $this->redirectToRoute('admin_admin_Category',['id'=>$advert->getId()]);
                 
         }
         if ($form->isSubmitted()){
@@ -59,12 +59,12 @@ class DefaultController extends Controller
                 ->getRepository('BootstrapThemeBundle:Category');
         $listCategory = $repository->findAll();
  
-        return $this->render('AdminAdminBundle:Default:category.html.twig',['listCategory'=>$listCategory,
+        return $this->render('AdminAdminBundle:Default:Category.html.twig',['listCategory'=>$listCategory,
                                                                              'myForm'=>$form->createView()]);
     }
     
     
-    public function topicsAction(Request $request)
+    public function TopicAction(Request $request)
     {
         // Création de l'entité Advert
         $advert = new Topic();
@@ -80,21 +80,21 @@ class DefaultController extends Controller
                 //On crée un message d'info
                 $this->get('session')->getFlashBag()->add('notice','Sujet bien enregistrée');
                 //On redirige
-                return $this->redirectToRoute('admin_admin_topics',['id'=>$advert->getId()]);
+                return $this->redirectToRoute('admin_admin_Topic',['id'=>$advert->getId()]);
                 
         }
         if ($form->isSubmitted()){
             //On crée un message d'info
             $this->get('session')->getFlashBag()->add('notice','Probleme avec le formulaire');
         }
-        
+       
         $repository = $this
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('BootstrapThemeBundle:Topic');
         $listTopic = $repository->findAll();
  
-        return $this->render('AdminAdminBundle:Default:topics.html.twig',['listTopic'=>$listTopic,
+        return $this->render('AdminAdminBundle:Default:Topic.html.twig',['listTopic'=>$listTopic,
                                                                              'TopicForm'=>$form->createView()]);
     }
     
@@ -116,13 +116,13 @@ class DefaultController extends Controller
 /**
  * @param $id
  *
- * @Route("category/{id}", requirements={"id" = "\d+"}, name="admin_admin_delete")
+ * @Route("{page}/{id}", requirements={"id" = "\d+"}, name="admin_admin_delete")
  * @return  RedirectResponse
  */
-public function deleteAction(Request $request,$id){
-        
+public function deleteAction(Request $request,$id,$page){
+    
         $em = $this->getDoctrine()->getManager();
-         $del = $em->getRepository('BootstrapThemeBundle:Category')->findOneBy(array('id' => $id));
+         $del = $em->getRepository('BootstrapThemeBundle:'.$page)->findOneBy(array('id' => $id));
         
 //        $del = $repository->find($id);
 //        $em = $this->getDoctrine()->getManager(); 

@@ -19,8 +19,16 @@ class TopicType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('Categorie', null, array('property_path' => 'tag'))
+        $builder->add('Tags', null, array('property_path' => 'tag'))
                 ->add('Titre', null, array('property_path' => 'name'))
+                ->add('Categories', EntityType::class,
+                        array(
+                            'class'=> 'Bootstrap\ThemeBundle\Entity\Category',
+                            'choice_label'=>'name',
+                            'expanded'=> false,
+                            'multiple'=> false,
+                        )
+                        )
                 ->add('Enregistrer',SubmitType::class);
     }
     
