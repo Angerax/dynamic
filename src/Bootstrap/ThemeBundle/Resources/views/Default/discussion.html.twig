@@ -30,17 +30,101 @@
             <div class="col-md-1 btnfloat"></div>
             <div class="container col-md-2 btnfloat">
                 <aside>
-
                     <div class="suggest">
                         
                     </div>
 
                     <div class="row"></div>
+                    
                     <div class="col-md-12 btnfloat suggest">
+                        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                            <a href="{{ path('static', {'page': 'newart'}) }}" class="btn btn-outline btn-primary center">Créer un nouveau sujet</a>
+                        {%endif%}
                         
+                        {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+                            <p class="txt-register">Vous devez être connecté(e) pour poster un commentaire</p>
+                            <a href="{{ path ("fos_user_security_login") }}" class="btn btn-outline btn-primary center">Connexion</a>
+                        {%endif%}
                     </div>
                 </aside>
             </div>
+            <div class="row">
+                
+                <div class="col-md-1"></div>
+            <div class="container col-md-7">
+                {% for post in postPages %}
+                    <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                {{ post.topics.name }}
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="col-md-2">
+                                    <img class="avatar" src="../Resources/public/images/ableton.png" alt="avatar">
+                                    <p class="pseudo">{{ post.usernames }}</p>
+                                </div>
+                                <div class="col-md-10 border">
+                                    <p>{{ post.message }}</p>
+                                    <iframe width="100%" height="180" src="{{ post.url }}" frameborder="0"></iframe>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <a href="#" class="flag">
+                                <i class="fa fa-flag"></i>
+                                <span><br/>Signaler</span>
+                                </a>
+                                    </div>
+
+                                    <div class="col-md-9"></div>
+
+                                    <div class="col-md-1">
+                                        <a href="#" class="flag">
+                                <span class="glyphicon glyphicon-heart"></span>
+                                <span class="like"><br/>5</span>
+                                </a>
+                                    </div>
+
+                                    <div class="col-md-1">
+                                        <a href="#" class="flag">
+                                <span class="glyphicon glyphicon-heart-empty"></span>
+                                <span class="like"><br/>0</span>
+                                </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>
+                {% endfor %}
+                <div class="text-center">{{ knp_pagination_render(postPages) }}</div>
+                
+                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                    <div class="col-md-12">
+                        <div class="well well-lg">
+                    {{ include("BootstrapThemeBundle:Default:formPost.html.twig") }}
+                    </div>
+                    </div>
+                {%endif%}
+                
+                    {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+                    <div class="col-md-12">
+                        <div class="well well-lg">
+                            <h4>Réagir</h4>
+                            <p class="txt-register">Vous devez être connecté(e) pour poster un commentaire</p>
+                            <div class="center">
+                                <a href="{{ path('static', {'page': 'register'}) }}" class="btn btn-outline btn-primary ">S'incrire</a>
+                                <a href="{{ path ("fos_user_security_login") }}" class="btn btn-outline btn-primary">Connexion</a>
+                            </div>
+                        </div>
+                    </div>
+                    {%endif%}
+                </div>
+                </div>
             <div class="row"></div>
         </div>
                 

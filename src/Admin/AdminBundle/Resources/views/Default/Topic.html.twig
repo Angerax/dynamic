@@ -14,22 +14,23 @@
                             {{ include("AdminAdminBundle:Default:formTopic.html.twig") }}
                             <ul>                 
                                 <div class="col-md-11 postopic">  
-                                {% for names in listTopic %}
+                                {% for topic in topicPages %}
                                 <div class="panel panel-default">
                             <div class="panel-heading">
                             </div>
                             <div class="panel-body">
 
                                 <div class="col-md-12 cat">                                    
-                                    <li><div class="box1">Catégorie: {{ names.categories.name }}</div><div lass="box2">Titre: {{ names.Name }}</div>
-                                        <div class="box3">Tags: {{ names.tag }}</div>
+                                    <li><div class="box1">Catégorie: {{ topic.categories.name }}</div><div lass="box2">Titre: {{ topic.Name }}</div>
+                                        <div class="box3">Tags: {{ topic.tag }}</div>
                                         <div class="col-md-1 del">
-                        <a href="{{ path('admin_admin_delete', {'id': names.id, 'page': 'Topic'}) }}" class="btn btn-outline btn-primary">Effacer</a>
+                        <a href="{{ path('admin_admin_delete', {'id': topic.id, 'page': 'Topic'}) }}" class="btn btn-outline btn-primary">Effacer</a>
                     </div></li>
                                 </div>
                             </div>
                         </div> 
                                 {% endfor %}
+                                <div class="text-center">{{ knp_pagination_render(topicPages) }}</div>
                                 </div>
                             </ul>
                         </div>

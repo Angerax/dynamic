@@ -10,17 +10,18 @@
                     <li><a class="current" href="{{ path('static', {'page': 'sujets'}) }}">Sujets</a></li>
 {% endblock %}
 {% block load %}
-{% for names in listTopic %}
+{% for topic in topicPages %}
                         <div class="panel panel-default">
                             <div class="panel-heading">
                             </div>
                             <div class="panel-body">
                             <div class="col-md-12 cat"> 
-                                <a href="#">
-                                 <li class="text">{{ names.Name }}</li>
+                                <a href="{{ path('post', {'top': topic.Id}) }}">
+                                 <li class="text">{{ topic.Name }}</li>
                                 </a>
                             </div>
                             </div>
                         </div> 
                         {% endfor %}
+<div class="text-center">{{ knp_pagination_render(postPages) }}</div>
 {% endblock %}

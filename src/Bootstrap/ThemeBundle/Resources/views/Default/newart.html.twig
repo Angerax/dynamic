@@ -23,13 +23,9 @@
                             <label>Catégories</label>
                             <select class="form-control">
                                 
-                                            {% block option %}
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            {% endblock %}
+                                            {% for names in listTopic %}
+                                                <option class="box1">{{ names.categories.name }}</option>
+                                            {% endfor %}
                             </select>
                         </div>
 

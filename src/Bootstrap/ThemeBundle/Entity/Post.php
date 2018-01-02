@@ -24,13 +24,6 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=50)
-     */
-    private $title;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="url", type="text", nullable=true)
      */
     private $url;
@@ -41,6 +34,18 @@ class Post
      * @ORM\Column(name="message", type="text")
      */
     private $message;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Bootstrap\ThemeBundle\Entity\Topic", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     */
+    protected $topics;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Bootstrap\ThemeBundle\Entity\Users", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
+     */
+    protected $usernames;
 
 
     /**
@@ -51,30 +56,6 @@ class Post
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Post
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
-    {
-        return $this->title;
     }
 
     /**
@@ -123,5 +104,61 @@ class Post
     public function getMessage()
     {
         return $this->message;
+    }
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->topics = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set topics
+     *
+     * @param \Bootstrap\ThemeBundle\Entity\Topic $topics
+     *
+     * @return Post
+     */
+    public function setTopics(\Bootstrap\ThemeBundle\Entity\Topic $topics)
+    {
+        $this->topics = $topics;
+
+        return $this;
+    }
+
+    /**
+     * Get topics
+     *
+     * @return \Bootstrap\ThemeBundle\Entity\Topic
+     */
+    public function getTopics()
+    {
+        return $this->topics;
+    }
+
+    /**
+     * Set usernames
+     *
+     * @param \FOS\UserBundle\Entity\User $usernames
+     *
+     * @return Post
+     */
+    public function setUsernames(\FOS\UserBundle\Entity\User $usernames)
+    {
+        $this->usernames = $usernames;
+
+        return $this;
+    }
+
+    /**
+     * Get usernames
+     *
+     * @return \FOS\UserBundle\Entity\User
+     */
+    public function getUsernames()
+    {
+        return $this->usernames;
     }
 }

@@ -2,16 +2,20 @@
 
 namespace Bootstrap\ThemeBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\User;
+use Bootstrap\ThemeBundle\Entity\Users;
 
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Bootstrap\ThemeBundle\Repository\UserRepository")
  */
-class User
+class Users extends BaseUser
 {
+    
     /**
      * @var int
      *
@@ -19,26 +23,12 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=25, unique=true)
-     */
-    private $name;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=50)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="images", type="text")
+     * @ORM\Column(name="images", type="text", nullable=true)
      */
     private $images;
 
@@ -154,5 +144,33 @@ class User
     public function getBio()
     {
         return $this->bio;
+    }
+
+    /**
+     * Set mail
+     *
+     * @param string $mail
+     *
+     * @return User
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * Get mail
+     *
+     * @return string
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+    
+    public function __construct() {
+        parent::__construct();
     }
 }

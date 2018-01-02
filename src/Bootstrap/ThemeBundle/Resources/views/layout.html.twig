@@ -37,7 +37,25 @@
                     </div>
                 </div>
                 {% block connexion %}
+                    {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                            <div class="col-md-2 username"><p>  Bienvenu(e) <b>{{ app.user.username }}</b></p>
+                           <a class="account" href="{{ path('static', {'page': 'compte'}) }}">Mon compte</a></div>
+                        <div class="col-md-1">
+                        <a href="{{ path("fos_user_security_logout") }}" class="btn btn-outline btn-primary logout">Se déconnecter</a>
+                    </div>
+                    {%endif%}
                     
+                    {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+                    <div class="margtb">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-1">
+                        <a href="{{ path('static', {'page': 'register'}) }}" class="btn btn-outline btn-primary">S'incrire</a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="{{ path ("fos_user_security_login") }}" class="btn btn-outline btn-primary">Connexion</a>
+                    </div>
+                </div>
+                    {%endif%}
                 {% endblock %}
                 
             </div>

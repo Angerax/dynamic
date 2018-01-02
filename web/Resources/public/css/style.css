@@ -277,6 +277,8 @@ ul li a{
 
 .account-title{
     text-align: center;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a{
@@ -303,4 +305,23 @@ a:active,a:hover {
     top:10px;
     font-weight:bold;
     color:#000;
+}
+
+.username{
+    color:#fff;
+    font-size:20px;
+    position: relative;
+    top:15px;
+    margin-right: -20px;
+}
+
+.logout{
+    margin-top: 18px;
+}
+
+.account{
+    font-size:15px;
+    position: relative;
+    top:-20px;
+    color: #01a2aa;
 }

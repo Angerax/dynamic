@@ -58,8 +58,13 @@ class DefaultController extends Controller
                 ->getManager()
                 ->getRepository('BootstrapThemeBundle:Category');
         $listCategory = $repository->findAll();
+        $categoriesPages  = $this->get('knp_paginator')->paginate(
+        $listCategory,
+        $request->query->get('page', 1)/*le numéro de la page à afficher*/,
+          5/*nbre d'éléments par page*/
+    );
  
-        return $this->render('AdminAdminBundle:Default:Category.html.twig',['listCategory'=>$listCategory,
+        return $this->render('AdminAdminBundle:Default:Category.html.twig',['categoriesPages'=>$categoriesPages, 'listCategory'=>$listCategory,
                                                                              'myForm'=>$form->createView()]);
     }
     
@@ -71,7 +76,7 @@ class DefaultController extends Controller
         
        $form = $this->createForm(TopicType::class,$advert);
        
-        if ($form->handleRequest($request)->isSubmitted()){
+        if ($form->handleRequest($request)->isSubmitted() && $form->isValid()){
                 //On persiste l'entité
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($advert);
@@ -93,15 +98,31 @@ class DefaultController extends Controller
                 ->getManager()
                 ->getRepository('BootstrapThemeBundle:Topic');
         $listTopic = $repository->findAll();
+        $topicPages  = $this->get('knp_paginator')->paginate(
+        $listTopic,
+        $request->query->get('page', 1)/*le numéro de la page à afficher*/,
+          10/*nbre d'éléments par page*/
+    );
  
-        return $this->render('AdminAdminBundle:Default:Topic.html.twig',['listTopic'=>$listTopic,
+        return $this->render('AdminAdminBundle:Default:Topic.html.twig',['topicPages'=>$topicPages, 'listTopic'=>$listTopic,
                                                                              'TopicForm'=>$form->createView()]);
     }
     
     
-    public function messagesAction()
+    public function messagesAction(Request $request)
     {
-        return $this->render('AdminAdminBundle:Default:messages.html.twig');
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('BootstrapThemeBundle:Post');
+        $listPost = $repository->findAll();
+        $postPages  = $this->get('knp_paginator')->paginate(
+        $listPost,
+        $request->query->get('page', 1)/*le numéro de la page à afficher*/,
+          10/*nbre d'éléments par page*/
+    );
+        
+        return $this->render('AdminAdminBundle:Default:messages.html.twig',['postPages'=>$postPages, 'listPost'=>$listPost]);
     }
     
     /**

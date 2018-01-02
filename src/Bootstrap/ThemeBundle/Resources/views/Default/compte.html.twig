@@ -36,31 +36,32 @@
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div class="tab-pane fade in active" id="info">
-                                    <h4 class="border2">Information</h4>
-                                    <div class="col-md-5 margtb"></div>
-                                    <div class="col-md-2 margtb">
-                                        
-                                        {% block avatar %}
-                                        
-                                        {% endblock %}
-                                        
-                                    </div>
-                                    <div class="row margtb"></div>
                                     <h4 class="border2">Pseudo</h4>
                                     <div class="account-title margtb2">
-                                        {% block name %}
-                                        
-                                        {% endblock %}
+                                        <div class="account-title margtb2">{{ app.user.username }}</div>
+                                    </div>
+                                    
+                                    <div class="row margtb"></div>
+                                    <h4 class="border2">Image</h4>
+                                    <div class="account-title margtb2">
+                                        <a href="#" class="btn btn-outline btn-primary logout">Changer</a>
+                                        <div class="account-title margtb2"></div>
+                                    </div>
+                                    
+                                    <div class="row margtb"></div>
+                                    <h4 class="border2">Mot de passe</h4>
+                                    <div class="account-title margtb2">
+                                        <a href="{{ path("fos_user_change_password") }}" class="btn btn-outline btn-primary logout">Changer</a>
+                                        <div class="account-title margtb2"></div>
                                     </div>
 
                                     <div class="row margtb"></div>
                                     <h4 class="border2">A propos</h4>
+                                    <div class="account-title margtb2">
+                                        <a href="#" class="btn btn-outline btn-primary logout">Modifier les infos</a>
+                                        <div class="account-title margtb2"></div>
+                                    </div>
                                         
-                                        {% block bio %}
-                                        
-                                        {% endblock %}
-                                        
-                                </div>
                                 <div class="tab-pane fade" id="history">
                                     <h4 class="border2">Historique</h4>
                                     <div class="col-md-2"></div>
