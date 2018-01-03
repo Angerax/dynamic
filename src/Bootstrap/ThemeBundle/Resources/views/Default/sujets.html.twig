@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block breadcrumbs %}
-                    <li><a class="current" href="{{ path('static', {'page': 'sujets'}) }}">Sujets</a></li>
+                    <li><a class="current2" href="{{ path('static', {'page': 'sujets'}) }}">Sujets</a></li>
 {% endblock %}
 {% block load %}
 {% for topic in topicPages %}
@@ -23,5 +23,5 @@
                             </div>
                         </div> 
                         {% endfor %}
-<div class="text-center">{{ knp_pagination_render(postPages) }}</div>
+<div class="text-center">{{ knp_pagination_render(topicPages) }}</div>
 {% endblock %}

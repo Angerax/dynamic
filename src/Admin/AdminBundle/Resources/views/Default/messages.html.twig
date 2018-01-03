@@ -13,20 +13,47 @@
                             <ul>                 
                                 <div class="col-md-11 postopic">  
                                 {% for post in postPages %}
-                                <div class="panel panel-default">
-                            <div class="panel-heading">
-                            </div>
-                            <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                </div>
+                                                <!-- /.panel-heading -->
+                                                <div class="panel-body"> 
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Auteur</th>
+                                                                    <th>Sujet</th>
+                                                                    <th>Message</th>
+                                                                    <th>Lien</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>{{ post.id }}</td>
+                                                                    <td>{{ post.usernames.username }}</td>
+                                                                    <td>{{ post.topics.name }}</td>
+                                                                    <td>{{ post.message }}</td>
+                                                                    <td>{{ post.url }}
+                                                                        <div class="del">
+                                                                            <a href="{{ path('admin_admin_delete', {'id': post.id, 'page': 'Post'}) }}" class="btn btn-outline btn-primary">Effacer</a>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
 
-                                <div class="col-md-12 cat">                                    
-                                    <li><div class="box1">Sujet: {{ post.topics.name }}</div><div lass="box2">Message: {{ post.message }}</div>
-                                        <div class="box3">Auteur: {{ post.usernames.username }}</div>
-                                        <div class="col-md-1 del">
-                        <a href="{{ path('admin_admin_delete', {'id': post.id, 'page': 'Post'}) }}" class="btn btn-outline btn-primary">Effacer</a>
-                    </div></li>
-                                </div>
-                            </div>
-                        </div> 
+                                                    <!-- /.table-responsive -->
+                                                </div>
+                                                <!-- /.panel-body -->
+                                            </div>
+                                            <!-- /.panel -->
+                                        </div>
+                                    </div>
                                 {% endfor %}
                                 <div class="text-center">{{ knp_pagination_render(postPages) }}</div>
                                 </div>
