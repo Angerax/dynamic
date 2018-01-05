@@ -6,6 +6,8 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\User;
 use Bootstrap\ThemeBundle\Entity\Users;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -27,10 +29,15 @@ class Users extends BaseUser
 
     /**
      * @var string
-     *
+     * @Assert\File(
+     *     maxSize = "5000000",
+     *     mimeTypes = {"image/jpeg", "image/gif", "image/png"},
+     *     maxSizeMessage = "La taille maximale permise pour l'image d'un projet est de 5MB.",
+     *     mimeTypesMessage = "Seuls les fichiers de type image (jpeg, gif, png, tiff) peuvent être uploadés"
+     * )
      * @ORM\Column(name="images", type="text", nullable=true)
      */
-    private $images;
+    protected $images= "Resources/public/images/avatars/genericIcon.png";
 
     /**
      * @var string
@@ -172,5 +179,29 @@ class Users extends BaseUser
     
     public function __construct() {
         parent::__construct();
+    }
+
+    /**
+     * Set imagePath
+     *
+     * @param string $imagePath
+     *
+     * @return Users
+     */
+    public function setImagePath($imagePath)
+    {
+        $this->imagePath = $imagePath;
+
+        return $this;
+    }
+
+    /**
+     * Get imagePath
+     *
+     * @return string
+     */
+    public function getImagePath()
+    {
+        return $this->imagePath;
     }
 }

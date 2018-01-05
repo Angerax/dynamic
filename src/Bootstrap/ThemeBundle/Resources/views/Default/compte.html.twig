@@ -44,6 +44,8 @@
                                     <div class="row margtb"></div>
                                     <h4 class="border2">Image</h4>
                                     <div class="account-title margtb2">
+                                        <img class="avatar-size" src="../{{ app.user.images }}" alt="avatar"/>
+                                        <input type="file" name="fichier" size="20"> 
                                         <a href="#" class="btn btn-outline btn-primary logout">Changer</a>
                                         <div class="account-title margtb2"></div>
                                     </div>
@@ -58,6 +60,7 @@
                                     <div class="row margtb"></div>
                                     <h4 class="border2">A propos</h4>
                                     <div class="account-title margtb2">
+                                        {{ app.user.bio }}
                                         <a href="#" class="btn btn-outline btn-primary logout">Modifier les infos</a>
                                         <div class="account-title margtb2"></div>
                                     </div>

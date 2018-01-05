@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Bootstrap\ThemeBundle\Entity\Category;
 use Bootstrap\ThemeBundle\Entity\Topic;
+use Bootstrap\ThemeBundle\Entity\Users;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,9 +24,20 @@ class DefaultController extends Controller
         return $this->render('AdminAdminBundle:Default:index.html.twig');
     }
     
-    public function usersAction()
+    public function usersAction(Request $request)
     {
-        return $this->render('AdminAdminBundle:Default:users.html.twig');
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('BootstrapThemeBundle:users');
+        $listUsers = $repository->findAll();
+        $usersPages  = $this->get('knp_paginator')->paginate(
+        $listUsers,
+        $request->query->get('page', 1)/*le numéro de la page à afficher*/,
+          5/*nbre d'éléments par page*/
+    );
+        
+        return $this->render('AdminAdminBundle:Default:users.html.twig',['usersPages'=>$usersPages, 'listUsers'=>$listUsers]);
     }
     
  
