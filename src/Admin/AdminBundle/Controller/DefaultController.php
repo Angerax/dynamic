@@ -131,7 +131,7 @@ class DefaultController extends Controller
         $postPages  = $this->get('knp_paginator')->paginate(
         $listPost,
         $request->query->get('page', 1)/*le numéro de la page à afficher*/,
-          10/*nbre d'éléments par page*/
+          5/*nbre d'éléments par page*/
     );
         
         return $this->render('AdminAdminBundle:Default:messages.html.twig',['postPages'=>$postPages, 'listPost'=>$listPost]);
@@ -155,18 +155,16 @@ class DefaultController extends Controller
 public function deleteAction(Request $request,$id,$page){
     
         $em = $this->getDoctrine()->getManager();
-         $del = $em->getRepository('BootstrapThemeBundle:'.$page)->findOneBy(array('id' => $id));
+        $del = $em->getRepository('BootstrapThemeBundle:'.$page)->findOneBy(array('id' => $id));
         
-//        $del = $repository->find($id);
-//        $em = $this->getDoctrine()->getManager(); 
         
- if ($del != null){       
- $em->remove($del); 
- $em->flush();
- }
+        if ($del != null){       
+        $em->remove($del); 
+        $em->flush();
+        }
  
-            $referer = $request->headers->get('referer');
-            return $this->redirect($referer);
+        $referer = $request->headers->get('referer');
+        return $this->redirect($referer);
 
     }
 }

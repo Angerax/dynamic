@@ -3,6 +3,7 @@
 namespace Bootstrap\ThemeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
@@ -23,10 +24,21 @@ class Post
 
     /**
      * @var string
+     * 
+     * @Assert\Regex(pattern="/https:\/\/www.house-mixes.com|https:\/\/www.youtube+(\.[a-z]{2,3})|https:\/\/youtu+(\.[a-z]{2,3})|https:\/\/soundcloud.com|https:\/\/www.mixcloud.com/", message="Le lien doit venir de Youtube, Soundcloud, House-mixes ou Mixcloud")
      *
      * @ORM\Column(name="url", type="text", nullable=true)
      */
     private $url;
+    
+    /**
+     * @var string
+     * 
+     * @Assert\Regex(pattern="/<iframe.*https:\/\/www.house-mixes.com|<iframe.*https:\/\/www.youtube+(\.[a-z]{2,3})|<iframe.*https:\/\/youtu+(\.[a-z]{2,3})|<iframe.*https:\/\/soundcloud.com|<iframe.*https:\/\/www.mixcloud.com/", message="Le lien doit venir d'un embed de Youtube, Soundcloud, House-mixes ou Mixcloud")
+     *
+     * @ORM\Column(name="embed", type="text", nullable=true)
+     */
+    private $embed;
 
     /**
      * @var string
@@ -46,6 +58,13 @@ class Post
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     protected $usernames;
+    
+    /**
+     * @var date
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
 
 
     /**
@@ -112,6 +131,7 @@ class Post
     public function __construct()
     {
         $this->topics = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->date = new \DateTime('now');
     }
 
     /**
@@ -138,14 +158,16 @@ class Post
         return $this->topics;
     }
 
+    
+
     /**
      * Set usernames
      *
-     * @param \FOS\UserBundle\Entity\User $usernames
+     * @param \Bootstrap\ThemeBundle\Entity\Users $usernames
      *
      * @return Post
      */
-    public function setUsernames(\FOS\UserBundle\Entity\User $usernames)
+    public function setUsernames(\Bootstrap\ThemeBundle\Entity\Users $usernames)
     {
         $this->usernames = $usernames;
 
@@ -155,10 +177,58 @@ class Post
     /**
      * Get usernames
      *
-     * @return \FOS\UserBundle\Entity\User
+     * @return \Bootstrap\ThemeBundle\Entity\Users
      */
     public function getUsernames()
     {
         return $this->usernames;
+    }
+
+    /**
+     * Set embed
+     *
+     * @param string $embed
+     *
+     * @return Post
+     */
+    public function setEmbed($embed)
+    {
+        $this->embed = $embed;
+
+        return $this;
+    }
+
+    /**
+     * Get embed
+     *
+     * @return string
+     */
+    public function getEmbed()
+    {
+        return $this->embed;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Post
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 }

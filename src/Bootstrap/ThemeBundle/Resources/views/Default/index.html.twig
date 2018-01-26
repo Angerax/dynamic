@@ -25,6 +25,32 @@
             
             
             <div class="row">
+                {% for post in postPages %}
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                {{ post.topics.name }}
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="col-md-4">
+                                    <img class="avatar-size-index" src="../{{ post.usernames.images }}" alt="avatar">
+                                    <p class="pseudo">{{ post.usernames }}</p>
+                                </div>
+                                <div class="col-md-8 border">
+                                    <p>{{ post.message }}</p>
+                                    
+                                </div>
+                        </div>
+                                
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>  
+             {% endfor %}
+             
+            </div>
+                                
+            <div class="row">
                 <div class="col-md-12 discover">
                     <a class="discover" href="{{ path('static', {'page': 'categories'}) }}">Explorer</a>
                 </div>

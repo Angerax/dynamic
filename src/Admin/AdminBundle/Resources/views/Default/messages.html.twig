@@ -8,10 +8,10 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <h1 class="page-header">Messages</h1>
-                                <div class="col-lg-10">
+                                <div class="col-lg-12">
                                 <div class="form-group">
                             <ul>                 
-                                <div class="col-md-11 postopic">  
+                                <div class="col-md-12 postopic">  
                                 {% for post in postPages %}
                                     <div class="row">
                                         <div class="col-lg-12">
@@ -29,6 +29,8 @@
                                                                     <th>Sujet</th>
                                                                     <th>Message</th>
                                                                     <th>Lien</th>
+                                                                    <th>Embed</th>
+                                                                    <th>Date</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -37,11 +39,14 @@
                                                                     <td>{{ post.usernames.username }}</td>
                                                                     <td>{{ post.topics.name }}</td>
                                                                     <td>{{ post.message }}</td>
-                                                                    <td>{{ post.url }}
-                                                                        <div class="del">
-                                                                            <a href="{{ path('admin_admin_delete', {'id': post.id, 'page': 'Post'}) }}" class="btn btn-outline btn-primary">Effacer</a>
-                                                                        </div>
+                                                                    <td>{{ post.url }}</td>
+                                                                    <td>{{ post.embed }}</td>
+                                                                    <td>{{ post.date|date('d-m-Y H:m') }}
+                                                                        
                                                                     </td>
+                                                                    <td><div class="del">
+                                                                            <a href="{{ path('admin_admin_delete', {'id': post.id, 'page': 'Post'}) }}" class="btn btn-outline btn-primary">Effacer</a>
+                                                                        </div></td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>

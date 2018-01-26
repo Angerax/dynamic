@@ -10,4 +10,9 @@ namespace Bootstrap\ThemeBundle\Repository;
  */
 class PostRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAll()
+    {
+        return $this->findBy(array(), array('date' => 'DESC')
+                );
+    }
 }

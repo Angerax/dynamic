@@ -44,9 +44,8 @@
                                     <div class="row margtb"></div>
                                     <h4 class="border2">Image</h4>
                                     <div class="account-title margtb2">
-                                        <img class="avatar-size" src="../{{ app.user.images }}" alt="avatar"/>
-                                        <input type="file" name="fichier" size="20"> 
-                                        <a href="#" class="btn btn-outline btn-primary logout">Changer</a>
+                                        <img class="avatar-size" src="../Resources/public/images/avatars/{{ app.user.images }}" alt="avatar"/>
+                                        {{ include("BootstrapThemeBundle:Default:formImage.html.twig") }}
                                         <div class="account-title margtb2"></div>
                                     </div>
                                     
@@ -56,23 +55,37 @@
                                         <a href="{{ path("fos_user_change_password") }}" class="btn btn-outline btn-primary logout">Changer</a>
                                         <div class="account-title margtb2"></div>
                                     </div>
-
-                                    <div class="row margtb"></div>
-                                    <h4 class="border2">A propos</h4>
-                                    <div class="account-title margtb2">
-                                        {{ app.user.bio }}
-                                        <a href="#" class="btn btn-outline btn-primary logout">Modifier les infos</a>
-                                        <div class="account-title margtb2"></div>
-                                    </div>
+                                </div>
                                         
                                 <div class="tab-pane fade" id="history">
                                     <h4 class="border2">Historique</h4>
-                                    <div class="col-md-2"></div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10">
                                     
-                                        {% block panel %}
-                                        
-                                        {% endblock %}
+                {% for post in postPages %}
+                    <div class="col-md-12">
+                        <div class="panel panel-default border-panel">
+                            <div class="panel-heading">
+                                {{ post.topics.name }}
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="col-md-2">
+                                    <img class="avatar-size" src="../{{ post.usernames.images }}" alt="avatar">
+                                    <p class="pseudo">{{ post.usernames }}</p>
+                                </div>
+                                <div class="col-md-8 border">
+                                    <p>{{ post.message }}</p>
+                                    <a href="{{ post.url }}">{{ post.url }}</a>
+                                    <p>{{ post.embed | raw }}</p>
+                                </div>
+                        </div>
+                                
+                    </div>
+                    <div class="col-md-1"></div>
+                </div>  
+                
+                {% endfor %}
                                         
                                     </div>
                                 </div>

@@ -7,7 +7,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Bootstrap\ThemeBundle\Entity\Post;
+use Bootstrap\ThemeBundle\Entity\Users;
+use Bootstrap\ThemeBundle\Entity\Topic;
 use Bootstrap\ThemeBundle\Form\PostType;
+use Bootstrap\ThemeBundle\Form\ImageType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -18,7 +21,16 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('BootstrapThemeBundle:Default:index.html.twig');
+         $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('BootstrapThemeBundle:Post');
+        $postPages = $repository->findBy(array(), array('date' => 'DESC'),
+                3
+                );
+        
+        
+        return $this->render('BootstrapThemeBundle:Default:index.html.twig',['postPages'=>$postPages]);
     }
     
     
@@ -45,6 +57,8 @@ class DefaultController extends Controller
      */
      public function discussionAction(Request $request)
     {
+        $tagName=$request->query->get('top');
+        dump($tagName);
          // Création de l'entité Advert
         $advert = new Post();
         
@@ -52,7 +66,11 @@ class DefaultController extends Controller
        
         if ($form->handleRequest($request)->isSubmitted() && $form->isValid()){
                 //On persiste l'entité
+            $tagName=$request->query->get('top');
+                $uid = $this->getUser()->getid();
+                dump($uid);
                 $advert->setUsernames($this->getUser());
+            
                 $em = $this->get('doctrine.orm.entity_manager');
                 $em->persist($advert);
                 $em->flush();
@@ -60,7 +78,8 @@ class DefaultController extends Controller
                 //On crée un message d'info
                 $this->get('session')->getFlashBag()->add('notice','Sujet bien enregistrée');
                 //On redirige
-                return $this->redirectToRoute('Bootstrap_Theme_Post',['id'=>$advert->getId()]);
+                return $this->redirect($request->getUri());
+                
                 
         }
         if ($form->isSubmitted()){
@@ -68,8 +87,6 @@ class DefaultController extends Controller
             $this->get('session')->getFlashBag()->add('notice','Probleme avec le formulaire');
         }
          
-         $tagName=$request->query->get('top');
-        
         $repository = $this
                 ->getDoctrine()
                 ->getManager()
@@ -77,6 +94,7 @@ class DefaultController extends Controller
         $listPost = $repository->findby(
                array('topics' => $tagName)
                 );
+        
         $postPages  = $this->get('knp_paginator')->paginate(
         $listPost,
         $request->query->get('page', 1)/*le numéro de la page à afficher*/,
@@ -114,9 +132,42 @@ class DefaultController extends Controller
     }
     
     
-    public function compteAction()
+    public function compteAction(Request $request)
     {
-        return $this->render('BootstrapThemeBundle:Default:compte.html.twig');
+        $advert = $this->getUser();
+        
+       $form = $this->createForm(ImageType::class,$advert);
+       
+        if ($form->handleRequest($request)->isSubmitted() && $form->isValid()){
+                //On persiste l'entité
+                $advert = $form->getData();
+                $em = $this->get('doctrine.orm.entity_manager');
+                $em->persist($advert);
+                $em->flush();
+                
+                //On crée un message d'info
+                $this->get('session')->getFlashBag()->add('notice','Catégorie bien enregistrée');
+                //On redirige
+                return $this->redirect($request->getUri());
+                
+        }
+        if ($form->isSubmitted()){
+            //On crée un message d'info
+            $this->get('session')->getFlashBag()->add('notice','Probleme avec le formulaire');
+        }
+        
+        $uid = $this->getUser()->getid();
+        
+         $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('BootstrapThemeBundle:Post');
+        $postPages = $repository->findBy
+                (array('usernames' => $uid)
+//               array('date' => 'desc')
+                );
+        
+        return $this->render('BootstrapThemeBundle:Default:compte.html.twig',['ImageForm'=>$form->createView(),'postPages'=>$postPages]);
     }
     
     

@@ -201,10 +201,30 @@ h4{
 
 .avatar{
     width:100%;
+    margin-left: 13px;
+}
+
+.avatar-size{
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin-left: 5px;
+}
+
+.avatar-size-index{
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
 }
 
 .pseudo{
     margin-top: 20px;
+    text-align: center;
+}
+
+.date{
+    margin-top: 20px;
+    font-size: 12px;
     text-align: center;
 }
 
@@ -330,7 +350,7 @@ a:active,a:hover {
     color: #01a2aa;
 background-color: #fff;
 border-color: #ccc;
-    display: inline-block;
+display: inline-block;
 padding: 6px 12px;
 margin-bottom: 0;
 font-size: 14px;
@@ -360,8 +380,14 @@ border-radius: 4px;
     color: #fff;
 }
 
-.avatar-size{
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
+.embedisp{
+    display:inline-block !important;
+}
+
+.border-panel{
+    border: 1px solid gray;
+}
+
+#Bootstrap_themebundle_users_imagesFile{
+    margin: 50px 0 50px 430px;
 }

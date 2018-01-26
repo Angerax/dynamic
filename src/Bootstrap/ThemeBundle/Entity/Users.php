@@ -8,12 +8,14 @@ use Symfony\Component\Security\Core\User\User;
 use Bootstrap\ThemeBundle\Entity\Users;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * User
  *
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Bootstrap\ThemeBundle\Repository\UserRepository")
+ * @Vich\Uploadable
  */
 class Users extends BaseUser
 {
@@ -29,15 +31,31 @@ class Users extends BaseUser
 
     /**
      * @var string
-     * @Assert\File(
-     *     maxSize = "5000000",
-     *     mimeTypes = {"image/jpeg", "image/gif", "image/png"},
-     *     maxSizeMessage = "La taille maximale permise pour l'image d'un projet est de 5MB.",
-     *     mimeTypesMessage = "Seuls les fichiers de type image (jpeg, gif, png, tiff) peuvent être uploadés"
-     * )
+     * 
      * @ORM\Column(name="images", type="text", nullable=true)
      */
-    protected $images= "Resources/public/images/avatars/genericIcon.png";
+    protected $images= "genericIcon.png";
+    
+    /**
+     * @Assert\File(
+     *     maxSize = "5000000",
+     *     mimeTypes = {"image/jpeg", "image/png"},
+     *     maxSizeMessage = "La taille maximale permise pour l'image d'un projet est de 5MB.",
+     *     mimeTypesMessage = "Seuls les fichiers de type image (jpeg, png) peuvent être uploadés"
+     * )
+     * 
+     * @Vich\UploadableField(mapping="images", fileNameProperty="images")
+     * 
+     * @var File $imagesFile
+     */
+    private $imagesFile;
+    
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     /**
      * @var string
@@ -80,6 +98,7 @@ class Users extends BaseUser
     {
         return $this->name;
     }
+    
 
     /**
      * Set password
@@ -130,6 +149,29 @@ class Users extends BaseUser
     }
 
     /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $images
+     *
+     * @return images
+     */
+    public function setImagesFile(File $images = null)
+    {
+        $this->imagesFile = $images;
+
+        if (null !== $images) 
+            $this->updatedAt = new \DateTimeImmutable();
+    
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImagesFile()
+    {
+        return $this->imagesFile;
+    }
+    
+    /**
      * Set bio
      *
      * @param string $bio
@@ -179,29 +221,30 @@ class Users extends BaseUser
     
     public function __construct() {
         parent::__construct();
+        $this->updatedAt = new \DateTimeImmutable();
     }
 
     /**
-     * Set imagePath
+     * Set updatedAt
      *
-     * @param string $imagePath
+     * @param \DateTime $updatedAt
      *
      * @return Users
      */
-    public function setImagePath($imagePath)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->imagePath = $imagePath;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
     /**
-     * Get imagePath
+     * Get updatedAt
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getImagePath()
+    public function getUpdatedAt()
     {
-        return $this->imagePath;
+        return $this->updatedAt;
     }
 }
