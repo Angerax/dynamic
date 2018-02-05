@@ -1,5 +1,5 @@
 {% extends "BootstrapThemeBundle::layout.html.twig" %}
-{% set page_title = 'Discussion' %}
+{% set page_title = 'Recherche' %}
 
 
 {% block title %}
@@ -15,43 +15,21 @@
                 <div class="col-md-12"><br/></div>
             </div>
 
-            <h2>Discussion</h2>
+            <h2>Recherche</h2>
 
             <div class="col-md-1"></div>
-            <div class="container col-md-7">
+            <div class="container col-md-10">
                 <ul class="breadcrumb">
+                    <li><a href="{{ path('bootstrap_theme_homepage') }}">Accueil</a></li>
                     <li><a href="{{ path('static', {'page': 'categories'}) }}">Catégories</a></li>
-                    <li><a href="{{ path('static', {'page': 'sujets'}) }}">Sujets</a></li>
-                    <li><a class="current2" href="{{ path('static', {'page': 'discussion'}) }}">Discussion</a></li>
                 </ul>
                 
             </div>
 
             <div class="col-md-1 btnfloat"></div>
-            <div class="container col-md-2 btnfloat">
-                <aside>
-                    <div class="suggest">
-                        
-                    </div>
-
-                    <div class="row"></div>
-                    
-                    <div class="col-md-12 btnfloat suggest">
-                        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                            <a href="{{ path('static', {'page': 'newart'}) }}" class="btn btn-outline btn-primary center">Créer un nouveau sujet</a>
-                        {%endif%}
-                        
-                        {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
-                            <p class="txt-register">Vous devez être connecté(e) pour poster un commentaire</p>
-                            <a href="{{ path ("fos_user_security_login") }}" class="btn btn-outline btn-primary center">Connexion</a>
-                        {%endif%}
-                    </div>
-                </aside>
-            </div>
-            <div class="row">
-                
-                <div class="col-md-1"></div>
-            <div class="container col-md-7">
+            <div class="row"></div>
+            <div class="col-md-1"></div>
+            <div class="container col-md-10">
                 {% for post in postPages %}
                     <div class="row">
                     <div class="col-md-12">
@@ -62,7 +40,7 @@
                             <div class="panel-body">
 
                                 <div class="col-md-2">
-                                    <img class="avatar-size" src="../Resources/public/images/avatars/{{ app.user.images }}" alt="avatar">
+                                    <img class="avatar-size" src="../Resources/public/images/avatars/{{ post.usernames.images }}" alt="avatar">
                                     <p class="pseudo">{{ post.usernames }}</p>
                                     <p class="date">{{ post.date|date('d-m-Y H:m') }}</p>
                                 </div>
@@ -103,28 +81,13 @@
                     <div class="col-md-1"></div>
                 </div>
                 {% endfor %}
+            <div class="row">
+                
+                <div class="col-md-1"></div>
+            <div class="container col-md-10">
+                
                 <div class="text-center">{{ knp_pagination_render(postPages) }}</div>
                 
-                {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                    <div class="col-md-12">
-                        <div class="well well-lg">
-                    {{ include("BootstrapThemeBundle:Form:formPost.html.twig") }}
-                    </div>
-                    </div>
-                {%endif%}
-                
-                    {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
-                    <div class="col-md-12">
-                        <div class="well well-lg">
-                            <h4>Réagir</h4>
-                            <p class="txt-register">Vous devez être connecté(e) pour poster un commentaire</p>
-                            <div class="center">
-                                <a href="{{ path('static', {'page': 'register'}) }}" class="btn btn-outline btn-primary ">S'incrire</a>
-                                <a href="{{ path ("fos_user_security_login") }}" class="btn btn-outline btn-primary">Connexion</a>
-                            </div>
-                        </div>
-                    </div>
-                    {%endif%}
                 </div>
                 </div>
             <div class="row"></div>

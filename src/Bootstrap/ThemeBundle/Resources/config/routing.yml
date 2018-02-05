@@ -27,20 +27,9 @@ bootstrap_theme_newart:
     path:     /newart
     defaults: { _controller: BootstrapThemeBundle:Default:newart }
     
-    
-bootstrap_theme_register:
-    path:     /register
-    defaults: { _controller: BootstrapThemeBundle:Default:register }
-    
-    
-bootstrap_theme_login:
-    path:     /login
-    defaults: { _controller: BootstrapThemeBundle:Default:login }
-    
-
-bootstrap_theme_passchange:
-    path:     /passchange
-    defaults: { _controller: BootstrapThemeBundle:Default:passchange }
+bootstrap_theme_search:
+    path:     /search
+    defaults: { _controller: BootstrapThemeBundle:Default:search }
     
     
 bootstrap_theme_static:

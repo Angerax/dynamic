@@ -19,18 +19,50 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return $this->render('AdminAdminBundle:Default:index.html.twig');
+        //Affiche les messages
+        $repository = $this
+                ->getDoctrine()
+                ->getManager()
+                ->getRepository('BootstrapThemeBundle:Post');
+        
+        
+        $tag=$request->get("tag");
+
+        
+        $query=$repository->createQueryBuilder('p')
+                ->where('p.message like :message')
+                ->orwhere('p.url like :url')
+                ->orwhere('p.embed like :embed')
+                ->setParameter('message','%'.$tag.'%')
+                ->setParameter('url','%'.$tag.'%')
+                ->setParameter('embed','%'.$tag.'%')
+                ->orderBy('p.date', 'DESC')
+                ->getQuery();
+        
+        $listPost = $query->getResult();
+        
+        //Définis la pagination à 5 éléments par page
+        $postPages  = $this->get('knp_paginator')->paginate(
+        $listPost,
+        $request->query->get('page', 1)/*le numéro de la page à afficher*/,
+          2/*nbre d'éléments par page*/
+    );
+        
+        return $this->render('AdminAdminBundle:Default:index.html.twig',['postPages'=>$postPages]);
     }
     
     public function usersAction(Request $request)
     {
+        //Affiche les utilisateurs
         $repository = $this
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('BootstrapThemeBundle:users');
         $listUsers = $repository->findAll();
+        
+        //Définis la pagination à 5 éléments par page
         $usersPages  = $this->get('knp_paginator')->paginate(
         $listUsers,
         $request->query->get('page', 1)/*le numéro de la page à afficher*/,
@@ -46,7 +78,7 @@ class DefaultController extends Controller
         // Création de l'entité Advert
         $advert = new Category();
         
-       $form = $this->createForm(CategoryType::class,$advert);
+        $form = $this->createForm(CategoryType::class,$advert);
        
         if ($form->handleRequest($request)->isSubmitted() && $form->isValid()){
                 //On persiste l'entité
@@ -65,11 +97,14 @@ class DefaultController extends Controller
             $this->get('session')->getFlashBag()->add('notice','Probleme avec le formulaire');
         }
         
+        //Affiche les catégories
         $repository = $this
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('BootstrapThemeBundle:Category');
         $listCategory = $repository->findAll();
+        
+        //Définis la pagination à 5 éléments par page
         $categoriesPages  = $this->get('knp_paginator')->paginate(
         $listCategory,
         $request->query->get('page', 1)/*le numéro de la page à afficher*/,
@@ -86,7 +121,7 @@ class DefaultController extends Controller
         // Création de l'entité Advert
         $advert = new Topic();
         
-       $form = $this->createForm(TopicType::class,$advert);
+        $form = $this->createForm(TopicType::class,$advert);
        
         if ($form->handleRequest($request)->isSubmitted() && $form->isValid()){
                 //On persiste l'entité
@@ -104,12 +139,15 @@ class DefaultController extends Controller
             //On crée un message d'info
             $this->get('session')->getFlashBag()->add('notice','Probleme avec le formulaire');
         }
-       
+        
+        //Affiche les Sujets
         $repository = $this
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('BootstrapThemeBundle:Topic');
         $listTopic = $repository->findAll();
+        
+        //Définis la pagination à 10 éléments par page
         $topicPages  = $this->get('knp_paginator')->paginate(
         $listTopic,
         $request->query->get('page', 1)/*le numéro de la page à afficher*/,
@@ -122,12 +160,15 @@ class DefaultController extends Controller
     
     
     public function messagesAction(Request $request)
-    {
+    {   
+        //Affiche les messages
         $repository = $this
                 ->getDoctrine()
                 ->getManager()
                 ->getRepository('BootstrapThemeBundle:Post');
         $listPost = $repository->findAll();
+        
+        //Définis la pagination à 5 éléments par page
         $postPages  = $this->get('knp_paginator')->paginate(
         $listPost,
         $request->query->get('page', 1)/*le numéro de la page à afficher*/,

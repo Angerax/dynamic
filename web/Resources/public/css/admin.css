@@ -232,3 +232,7 @@ a{
 th, tr{
     color:#000;
 }
+
+.logoutAdmin{
+    margin: 18px 18px 18px 40px;
+}
