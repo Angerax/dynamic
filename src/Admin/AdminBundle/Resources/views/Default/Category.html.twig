@@ -1,5 +1,4 @@
 {% extends "AdminAdminBundle::layout.html.twig" %}
-{% set page_title = 'Catégories' %}
 
 {% block content %}
            <!-- Page Content -->
@@ -12,7 +11,7 @@
                                 <div class="col-lg-10">
                                 <div class="form-group">
                             <label>Ajouter une catégorie</label>
-                            {{ include("AdminAdminBundle:Default:form.html.twig") }}
+                            {{ include("AdminAdminBundle:Form:form.html.twig") }}
                             <ul>                 
                                 <div class="col-md-11 pos">  
                                 {% for category in categoriesPages %}
@@ -37,7 +36,7 @@
                                             <td>{{ category.id }}</td>
                                             <td>{{ category.Name }}
                                                 <div class="del">
-                                                    <a href="{{ path('admin_admin_delete', {'id': category.id, 'page': 'Topic'}) }}" class="btn btn-outline btn-primary">Effacer</a>
+                                                    <a href="{{ path('admin_admin_delete', {'id': category.id, 'page': 'Category'}) }}" class="btn btn-outline btn-primary">Effacer</a>
                                                     </div>
                                             </td>
                                         </tr>

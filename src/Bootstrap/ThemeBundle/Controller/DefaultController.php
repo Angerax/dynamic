@@ -249,7 +249,7 @@ class DefaultController extends Controller
           2/*nbre d'éléments par page*/
     );
         
-     return $this->render('BootstrapThemeBundle:default:search.html.twig',['postPages'=>$postPages, 'listPost'=>$listPost]);   
+     return $this->render('BootstrapThemeBundle:Default:search.html.twig',['postPages'=>$postPages, 'listPost'=>$listPost]);   
     }
     
     
